@@ -1,18 +1,16 @@
-//import 'react-native-gesture-handler';
 import React from "react";
 import {  StyleSheet} from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import Log from "./Screens/Login";
 import Reg from "./Screens/Registr";
-import Profile from "./Screens/Profile";
 import {connect, Provider} from 'react-redux';
 import { store } from './store';
 import {PRESSED} from "./constants/actiontype";
 import Feed from "./Screens/Feed";
-import Screen1 from "./Screens/Screen1";
-import Screen2 from "./Screens/Screen2";
+import DrawScreen from "./Screens/DrawScreen";
+import Friends from "./Screens/friends";
+
 
 
 const Tab = createBottomTabNavigator();
@@ -42,8 +40,9 @@ function MyTabsLog (props) {
 function MyTabsHome (props) {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Profile" component={Profile}/>
+            <Tab.Screen name="Profile" component={DrawScreen}/>
             <Tab.Screen name="Feed" component={Feed}/>
+            <Tab.Screen name="Friends" component={Friends}/>
         </Tab.Navigator>
     );
 }

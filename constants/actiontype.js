@@ -1,2 +1,4 @@
-export const PRESSED = 'PRESSED';
+export const PRESSEDLOG = 'PRESSEDLOG';
+export const PRESSEDREG = 'PRESSEDREG';
 export const PRESSEDLOGOUT = 'PRESSEDLOGOUT';
+export const FETCHED = 'FETCHED';

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, View, Switch, StyleSheet, TextInput, Modal, Text, Pressable } from "react-native";
 import { connect, useDispatch } from 'react-redux';
-import { FETCHED, PRESSED } from "../constants/actiontype";
+import { FETCHED, PRESSEDLOG } from "../constants/actiontype";
 
 const mapStateToProps = (state) => {
 
@@ -13,18 +13,30 @@ const mapStateToProps = (state) => {
     }};
 
 const mapDispatchToProps = (dispatch) => ({
-    onPress: () =>
-        dispatch({type: PRESSED}),
+    onPress: (payload) =>
+        dispatch({type: PRESSEDLOG, payload}),
 
 });
 
 const Login = (props) => {
 
-    const [name, setName] = useState('Name');
-    const [password, setPassword] = useState('Password');
+    const [login, setLogin] = useState('sfsdgrgrrhty');
+    const [password, setPassword] = useState('11111111');
 
     const pressF = () => {
-        props.onPress()
+              
+        fetch('http://192.168.1.78:3000/users/login/', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"login": login, "password": password})
+          })
+          .then(res => res.json())
+          .then(res =>  props.onPress(res))
+
+       
     }
 
 
@@ -34,7 +46,7 @@ const Login = (props) => {
 
             <View  style={styles.inputs}>
                 <Text style={styles.textW}>LOG IN</Text>
-                <TextInput style={styles.inputW} onChangeText={setName}>{name}</TextInput>
+                <TextInput style={styles.inputW} onChangeText={setLogin}>{login}</TextInput>
                 <TextInput style={styles.inputW} onChangeText={setPassword}>{password}</TextInput>
                 <Button onPress={pressF} style={styles.button}  title="Submit"  />
             </View>

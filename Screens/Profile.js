@@ -1,23 +1,18 @@
 import 'react-native-gesture-handler'
 import React, { useState } from "react";
-import {View, Text, Button, StyleSheet } from "react-native";
+import {View, Text, Button, StyleSheet, Image } from "react-native";
 import { Header } from 'react-native-elements';
 import {PRESSED, PRESSEDLOGOUT} from "../constants/actiontype";
 import {connect} from "react-redux";
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import Screen1 from "./Screen1";
-import Screen2 from "./Screen2";
-import { NavigationContainer } from '@react-navigation/native';
+
 
 
 
 const mapStateToProps = (state) => {
 
     return {
-        main: state.appLoad.data,
-        bool: state.appLoad.bool,
-        cart: state.appLoad.cart,
-        switch: state.appLoad.switch
+        currentUser: state.appLoad.currentUser,
+
     }};
 
 const mapDispatchToProps = (dispatch) => ({
@@ -26,30 +21,28 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-
-
 const Profile = (props) => {
-
-    const LogOut = () => {
-        props.onPress()
-    }
-
 
     return (
 
         <View style={styles.white}>
-            <Header
-                backgroundColor="#F0F8FF"
-                rightComponent={ <Button onPress={LogOut} style={styles.button}  title="Log out" />}
+
+
+
+        <Image
+            source ={{ uri:(props.currentUser.img)}}
+            style={{width: 150
+            , height: 150}}
+            key={Math.random()}
             />
-            <Text>My Profile</Text>
 
-
-
+        <Text key={Math.random()}>{props.currentUser.name}</Text>
+            
         </View>
 
     );
 }
+
 const styles = StyleSheet.create({
 
     white: {

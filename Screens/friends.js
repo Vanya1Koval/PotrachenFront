@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const Feed = (props) => {
+const Friends = (props) => {
 
 
 
@@ -29,32 +29,32 @@ const Feed = (props) => {
         <ScrollView>
         <View style={styles.white}>
            
-           <View>
-           <Image source={require('../assets/screen.png')} style={{width: 150, height: 150}} />
+           <View flexDirection='row'>
+           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
             <Text >Name</Text>
             <Text >Age</Text>
             <Text >??????</Text>
             </View>
-            <View>
-           <Image source={require('../assets/screen.png')} style={{width: 150, height: 150}} />
+            <View flexDirection='row'>
+           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
             <Text >Name</Text>
             <Text >Age</Text>
             <Text >??????</Text>
             </View>
-            <View>
-           <Image source={require('../assets/screen.png')} style={{width: 150, height: 150}} />
+            <View flexDirection='row'>
+           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
+            <Text >Name </Text>
+            <Text >Age</Text>
+            <Text >??????</Text>
+            </View>
+            <View flexDirection='row'>
+           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
             <Text >Name</Text>
             <Text >Age</Text>
             <Text >??????</Text>
             </View>
-            <View>
-           <Image source={require('../assets/screen.png')} style={{width: 150, height: 150}} />
-            <Text >Name</Text>
-            <Text >Age</Text>
-            <Text >??????</Text>
-            </View>
-            <View>
-           <Image source={require('../assets/screen.png')} style={{width: 150, height: 150}} />
+            <View flexDirection='row'>
+           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
             <Text >Name</Text>
             <Text >Age</Text>
             <Text >??????</Text>
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+export default connect(mapStateToProps, mapDispatchToProps)(Friends);
