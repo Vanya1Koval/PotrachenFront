@@ -9,24 +9,6 @@ import Screen1 from "./Screen1";
 import Screen2 from "./Screen2";
 import { NavigationContainer } from '@react-navigation/native';
 
-const Drawer = createDrawerNavigator();
-
-function MyDrawer() {
-    return (
-        <Drawer.Navigator useLegacyImplementation initialRouteName="Profile">
-            <Drawer.Screen
-                name="Screen1"
-                component={Screen1}
-                options={{ drawerLabel: 'Screen1' }}
-            />
-            <Drawer.Screen
-                name="Screen2"
-                component={Screen2}
-                options={{ drawerLabel: 'Screen2' }}
-            />
-        </Drawer.Navigator>
-    );
-}
 
 
 const mapStateToProps = (state) => {
@@ -54,8 +36,7 @@ const Profile = (props) => {
 
 
     return (
-<NavigationContainer>
-    <MyDrawer/>
+
         <View style={styles.white}>
             <Header
                 backgroundColor="#F0F8FF"
@@ -66,7 +47,7 @@ const Profile = (props) => {
 
 
         </View>
-</NavigationContainer>
+
     );
 }
 const styles = StyleSheet.create({
