@@ -7,10 +7,7 @@ import {connect} from "react-redux";
 const mapStateToProps = (state) => {
 
     return {
-        main: state.appLoad.data,
-        bool: state.appLoad.bool,
-        cart: state.appLoad.cart,
-        switch: state.appLoad.switch
+        friends: state.appLoad.friends,
     }};
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,44 +19,15 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Friends = (props) => {
 
-
+    console.log(props.friends)
 
 
     return (
         <ScrollView>
-        <View style={styles.white}>
+            <View style={styles.white}>
            
-           <View flexDirection='row'>
-           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
-            <Text >Name</Text>
-            <Text >Age</Text>
-            <Text >??????</Text>
+           
             </View>
-            <View flexDirection='row'>
-           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
-            <Text >Name</Text>
-            <Text >Age</Text>
-            <Text >??????</Text>
-            </View>
-            <View flexDirection='row'>
-           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
-            <Text >Name </Text>
-            <Text >Age</Text>
-            <Text >??????</Text>
-            </View>
-            <View flexDirection='row'>
-           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
-            <Text >Name</Text>
-            <Text >Age</Text>
-            <Text >??????</Text>
-            </View>
-            <View flexDirection='row'>
-           <Image source={require('../assets/screen.png')} style={{width: 30, height: 30}} />
-            <Text >Name</Text>
-            <Text >Age</Text>
-            <Text >??????</Text>
-            </View>
-        </View>
         </ScrollView>
     );
 }

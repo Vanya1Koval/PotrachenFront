@@ -12,11 +12,13 @@ const appLoad =  (state = initialState, action) => {
     switch (action.type) {
         case PRESSEDLOG:
 
-            console.log(action.payload)
+            console.log(action.payload.userLogin._id)
             if (action.payload) {
             return { ...state,
                 isLog: true,
-                currentUser: action.payload
+                currentUser: action.payload.userLogin,
+                friends: action.payload.userLogin.friends,
+                token: action.payload.token
             }}
 
             case PRESSEDREG:

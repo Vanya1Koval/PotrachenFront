@@ -27,13 +27,15 @@
     "react-native-elements": "^3.4.2",
     "react-native-form-validator": "^0.5.1",
     "react-native-gesture-handler": "~2.2.1",
+    "react-native-image-picker": "^4.8.4",
     "react-native-reanimated": "~2.8.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^12.3.0",
     "react-native-web": "0.17.7",
     "react-navigation": "^4.4.4",
     "react-redux": "^8.0.2",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "expo-image-picker": "~13.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

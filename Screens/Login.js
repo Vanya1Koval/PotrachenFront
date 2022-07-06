@@ -6,10 +6,7 @@ import { FETCHED, PRESSEDLOG } from "../constants/actiontype";
 const mapStateToProps = (state) => {
 
     return {
-        main: state.appLoad.data,
-        bool: state.appLoad.bool,
-        cart: state.appLoad.cart,
-        switch: state.appLoad.switch
+        main: state.appLoad.data
     }};
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,8 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Login = (props) => {
 
-    const [login, setLogin] = useState('sfsdgrgrrhty');
-    const [password, setPassword] = useState('11111111');
+    const [login, setLogin] = useState('FirstUser');
+    const [password, setPassword] = useState('SecondUser');
 
     const pressF = () => {
               

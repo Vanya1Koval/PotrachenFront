@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import {View, Text, Button, StyleSheet, TextInput, Image } from "react-native";
-import * as ImagePicker from 'expo-image-picker';
+import {View, Text, Button, StyleSheet, TextInput } from "react-native";
 import { Header } from 'react-native-elements';
 import {PRESSED, PRESSEDLOGOUT} from "../constants/actiontype";
 import {connect} from "react-redux";
@@ -19,45 +18,23 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-const Add = (props) => {
+const EditPhoto = (props) => {
 
+    const [url, setUrl] = useState('Image url');
     const [text, setText] = useState('Text');
-    const [image, setImage] = useState(null);
-    const [filedata, setFiledata] = useState(null);
 
-  const pickImage = async () => {
-
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    console.log(result);
-
-    if (!result.cancelled) {
-      setImage(result.uri);
-      setFiledata({
-        uri: result.uri,
-        name: 'SomeImageName.jpg',
-        type: 'image/jpg',
-      });
-      console.log(image)
-    }
-  };
 
     const createPost = () => {
 
-        const formData = new FormData();
-        formData.append('filedata', filedata);
-        formData.append('text', text);
-        formData.append('creatorId', props.currentUser._id);
-        console.log(JSON.stringify({"filedata": filedata, "text": text, "creatorId": props.currentUser._id}))
-        fetch('http://192.168.1.78:3000/posts/', {
+        fetch('http://192.168.1.78:3000/users/createpost/', {
             method: 'POST',
-            body: formData
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ "img": url, "text": text, "creatorId": props.currentUser._id })
           })
+          .then(setUrl(''))
           .then(setText(''))
 
     }
@@ -67,10 +44,8 @@ const Add = (props) => {
 
         <View style={styles.white}>
             <View  style={styles.inputs}>
-            <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                <TextInput style={styles.inputW} onChangeText={setUrl}>{url}</TextInput>
                 <TextInput style={styles.inputW} onChangeText={setText}>{text}</TextInput>
-                
                 <Button onPress={createPost}  style={styles.button}  title="Submit"  />
             </View>
         </View>
@@ -110,4 +85,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Add);
+export default connect(mapStateToProps, mapDispatchToProps)(EditPhoto);

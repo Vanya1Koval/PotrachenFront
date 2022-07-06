@@ -29,17 +29,34 @@ const Search = (props) => {
 
     }, []);
 
-if(props.renderBool) {
+    const addFriend = (event) => {
+
+        console.log(event._targetInst/* .return.key */ )
+
+       // fetch('http://192.168.1.78:3000/friends/', {
+        //    method: 'POST',
+        //    headers: {
+         //     'Accept': 'application/json, text/plain, */*',
+        //      'Content-Type': 'application/json'
+         //   },
+         //   body: JSON.stringify({"login": login, "password": password})
+         // })
+          //.then(res => res.json())
+         // .then(res =>  props.onPress(res))
+
+    }
+
+if(props.renderBool) { console.log(props.main)
     return (
 
         <View style={styles.white}>
             
-            {props.main.map((obj) =>
+             {props.main.map((obj) =>
 
             <View style={styles.people}  key={Math.random()} >
 
             <Image
-                source ={{ uri:(obj.img)}}
+                source ={{ uri:(`http://192.168.1.78:3000/static/userPic/${obj.img}`)}}
                 style={{width: 30
                     , height: 30}}
                 key={Math.random()}
@@ -47,8 +64,10 @@ if(props.renderBool) {
 
             <Text key={Math.random()}>{obj.name}</Text>
 
+            <Button onPress={event => addFriend(event)} key={obj._id}  style={styles.button}  title="Connect"  />
 
-            </View>)}
+
+            </View>)} 
         </View>
     );} else {return (<View></View>)}
 }
